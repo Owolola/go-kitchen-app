@@ -36,13 +36,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<script>
+    // This shim creates a 'process' object on the window, allowing
+    // process.env.API_KEY to work in a browser environment.
+    // IMPORTANT: Replace "YOUR_API_KEY_HERE" with your actual Google AI Studio API key.
+    window.process = {
+        env: {
+            API_KEY: "YOUR_API_KEY_HERE"
+        }
+    };
+</script>
 <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@19",
-    "react-dom/": "https://esm.sh/react-dom@19/",
-    "react/": "https://esm.sh/react@19/",
-    "@google/genai": "https://esm.sh/@google/genai"
+    "react-dom/client": "https://esm.sh/react-dom@19/client",
+    "@google/genai": "https://esm.sh/@google/genai",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
   }
 }
 </script>
