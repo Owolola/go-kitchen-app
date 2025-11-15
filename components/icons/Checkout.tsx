@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
-import { CartItem } from '../types';
-import CloseIcon from './icons/CloseIcon';
-import CreditCardIcon from './icons/CreditCardIcon';
-import DevicePhoneMobileIcon from './icons/DevicePhoneMobileIcon';
+import { CartItem } from '../../types';
+import CloseIcon from './CloseIcon';
+import CreditCardIcon from './CreditCardIcon';
+import DevicePhoneMobileIcon from './DevicePhoneMobileIcon';
 
 interface CheckoutProps {
     isOpen: boolean;

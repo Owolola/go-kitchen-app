@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
 import { CartItem, MenuItemData, User } from './types';
 import { INITIAL_MENU_ITEMS } from './constants';
@@ -5,7 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
 import Chatbot from './components/Chatbot';
-import Checkout from './components/Checkout';
+import Checkout from './components/icons/Checkout';
 import OrderSuccess from './components/OrderSuccess';
 import HomePage from './components/HomePage';
 import MenuPage from './components/MenuPage';
@@ -270,7 +271,7 @@ const App: React.FC = () => {
                 onSwitchMode={(newMode) => setAuthModal(newMode)}
             />
 
-            <Chatbot />
+            <Chatbot currentUser={currentUser} />
             
             {toastMessage && (
                 <div className="fixed bottom-24 right-6 bg-brand-dark text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-pop">

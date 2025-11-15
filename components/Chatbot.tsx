@@ -1,18 +1,30 @@
 
+
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { ChatMessage } from '../types';
+import { ChatMessage, User } from '../types';
 import { getChatbotResponse } from '../services/geminiService';
 import ChatIcon from './icons/ChatIcon';
 import CloseIcon from './icons/CloseIcon';
 
-const Chatbot: React.FC = () => {
+interface ChatbotProps {
+    currentUser: User | null;
+}
+
+const Chatbot: React.FC<ChatbotProps> = ({ currentUser }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState<ChatMessage[]>([
-        { role: 'model', text: 'Hello! I am the Go Kitchen assistant. How can I help you with your order or any questions about our menu?' }
-    ]);
+    const [messages, setMessages] = useState<ChatMessage[]>([]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const greeting = currentUser ? `Hello, ${currentUser.name}!` : 'Hello!';
+        const initialMessage = {
+            role: 'model' as const,
+            text: `${greeting} I am the Go Kitchen assistant. How can I help you with your order or any questions about our menu?`
+        };
+        setMessages([initialMessage]);
+    }, [currentUser]);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
